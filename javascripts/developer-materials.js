@@ -121,6 +121,11 @@ app.dm = {
     $.unique(topics);
 
     /*
+      Project
+    */
+    var project = $('[name="sys_project"]').val();
+
+    /*
       Formats
     */ 
     var formats = $('input[name="filter-format"]:checked').map(function () {
@@ -197,8 +202,11 @@ app.dm = {
       "formats" : formats,
       "skillLevel" : skillLevel,
       "product" : product,
-      "publishDate" : publishDate
+      "publishDate" : publishDate,
+      "project" : project
     });
+
+    console.log(filters);
 
     /* Store the raw form values in local storage. */
     var formValues = {
@@ -261,6 +269,10 @@ app.dm = {
       }
     }
 
+    if(currentFilters['project']) {
+      query.push("sys_project:"+project);
+    }
+
     var pageHashFilters = currentFilters;
     // create an array from the formats so we can check for sandbox
     var pageHashFormats = (pageHashFilters.formats ? pageHashFilters.formats.split(' ') : []);
@@ -308,7 +320,7 @@ app.dm = {
       url : app.dcp.url.search,
       data : {
         "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", 
-                    "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"],
+                    "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental", "sys_project"],
         "query" : query,
         "size" : maxResults,
         "content_provider" : ["jboss-developer", "rht"]
