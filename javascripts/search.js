@@ -55,7 +55,8 @@ app.search = {
     e.preventDefault();
   });
 
-  $('form.search').on('keyup','input',function(e) {
+  // listen to key events on the search form and the buzz filter page
+  $('form.search, form.buzz-filters').on('keyup','input',function(e) {
     var form = $(this).parent();
     /*
       Check for enter / return key 
@@ -103,7 +104,11 @@ app.search = {
         $('.searchResults').html('');
         return;
       }
-      app.search.fetch(query);
+      // if it is the search form, go ahead and search
+      // otherwise it is buzz, and we handle this in buzz.js
+      if(form.hasClass('search')) {
+        app.search.fetch(query);
+      }
     }
   });
 
