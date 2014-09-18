@@ -55,6 +55,10 @@
   color:white;
   padding:50px 0;
   margin-bottom: 40px;
+  border-bottom: 1px solid $grey-2;
+  h1 {
+    color:white;
+  }
   h2 {
     color:white;
     font-size: emCalc(65);
@@ -93,6 +97,18 @@
   background:cdn("../images/branding/microsite-2.jpg") top center no-repeat;
   text-align: left;
   background-size:cover;
+}
+
+.y-center {
+  text-align: center;
+  display: table;
+  & > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  a {
+    margin: 0;
+  }
 }
 
 @include tablet-landscape-and-down {
@@ -256,5 +272,9 @@ body.microsite-multi-page, body.microsite {
         }
       }
     }
+  }
+
+  .y-center {
+    height:auto !important;
   }
 }
