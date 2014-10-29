@@ -1,0 +1,16 @@
+= JBoss Solutions
+:awestruct-layout: solution-overview
+
+== Technology Solutions
+Say something about Technology Solutions here
+
+== Service Solutions
+Say something about Service Solutions here
+
+== Case Studies
+Say something about Case Studies here
+
+== Partners
+Say something about Partners here
+
+

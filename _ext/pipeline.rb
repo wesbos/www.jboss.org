@@ -15,6 +15,7 @@ require 'jboss_developer'
 require 'nav'
 require 'stacks'
 require 'product'
+require 'solution'
 require 'mktg_ops'
 require 'disqus'
 require 'disqus_more'
@@ -33,6 +34,7 @@ Awestruct::Extensions::Pipeline.new do
 
   # parse AsciiDoc documents and create page variables out of their sections
   extension Aweplug::Extensions::Sections.new
+
 
   # Load events from a google spreadsheet
   extension Aweplug::Extensions::GoogleSpreadsheet.new(assign_to: 'events',
@@ -144,6 +146,8 @@ Awestruct::Extensions::Pipeline.new do
   extension JBoss::Developer::Extensions::Nav.new
  
   extension JBoss::Developer::Extensions::CommonDir.new
+
+  extension JBoss::Developer::Extensions::Solution.new
 
   # Load featured videos from a googlespreadsheet. Must be loaded before product
   extension Aweplug::Extensions::GoogleSpreadsheet.new(assign_to: 'featured_videos',

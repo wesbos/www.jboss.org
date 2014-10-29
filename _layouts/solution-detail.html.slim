@@ -1,0 +1,39 @@
+---
+layout: technology-base
+title: Detail
+---
+.row
+  .large-24.columns
+    h2 #{page.solution.name}
+.row
+  .large-19.columns
+    h3.divider
+    = page._overview
+    = partial("share.html.slim", :url => "http://pagelink.com", :title => "Page title goes here")
+    
+      .large-8.columns
+        img src="http://lorempixel.com/400/300"
+        a.button.button--clear(href="#")
+          i.fa.fa-arrow-circle-down 
+          | Download the full case study
+      .large-16.columns
+        blockquote.speech-bubble
+          p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore eos ut non soluta, obcaecati excepturi dicta error aspernatur dolorum ea quam mollitia exercitationem laudantium voluptate repellendus nostrum molestias dolor, ipsum.
+          cite Wes Bos, really cool guy
+    .row.solutions-body
+      .large-12.columns
+        = page._left_section
+      .large-12.columns
+        = page._right_section
+    h3 #{page._additional_section_title}
+    = page._additional_section
+
+
+  .large-5.columns
+    h4 Related Solutions
+    - for solution in page.solution.related_solutions
+      a.solution-name-link(href="#{site.base_url}/solutions/technology/#{solution}")
+        .widget.widget--solution
+          img src=cdn(site.base_url + "/images/solutions/#{solution}/thumb_300x200.png")
+          h3 #{solution}
+

@@ -1,0 +1,6 @@
+= Technology Solutions
+:awestruct-layout: solution-catagory
+
+== Overview
+Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ea ratione, debitis nostrum numquam quibusdam quisquam saepe, impedit maxime eligendi alias, rem pariatur sunt necessitatibus. Ratione ipsam eveniet, laudantium modi minus iste accusamus rerum, facilis in commodi quo voluptatibus voluptas!
+
