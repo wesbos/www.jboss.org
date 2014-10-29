@@ -1,0 +1,8 @@
+name: Mobile Push
+long_description: Red Hat JBoss Mobile Add-On is a set of components for developing and supporting hybrid, native and push-enabled mobile applications. JBoss Mobile Add-On provides resources for creating and connecting mobile applications to your server-side Java EE infrastructure.
+docs:
+ description: All documentation
+ url: http://aerogear.org/docs/
+related_solutions:
+  - docker
+  - push

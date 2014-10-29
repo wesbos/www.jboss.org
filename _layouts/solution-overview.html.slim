@@ -1,0 +1,39 @@
+---
+layout: technology-base
+title: Solutions
+description: todo
+---
+h2 Solutions Overview
+
+.row.solutions-row
+  ul.large-block-grid-4.small-block-grid-2
+      li.solution.large-8.column
+        a.image-link: img(src=cdn(site.base_url + "/images/slider-image1.jpg"))
+        a.solution-name-link(href="./technology")
+          h3.solution-name Technology Solutions
+        = page._technology_solutions
+      li.solution.large-8.column
+        a.image-link: img(src=cdn(site.base_url + "/images/slider-image1.jpg"))
+        a.solution-name-link(href="#")
+          h3.solution-name Service Solutions
+        = page._service_solutions
+      li.solution.large-8.column
+        a.image-link: img(src=cdn(site.base_url + "/images/slider-image1.jpg"))
+        a.solution-name-link(href="#")
+          h3.solution-name Case Studies
+        = page._case_studies
+      li.solution.large-8.column
+        a.image-link: img(src=cdn(site.base_url + "/images/slider-image1.jpg"))
+        a.solution-name-link(href="#")
+          h3.solution-name Partners
+        = page._partners
+
+.row
+  .large-16.large-centered.columns
+    h2.divider Stay up to date
+    .large-16.columns
+      p Sign up for the JBoss newsletter to receive updates on the latest solutions.
+    .large-8.columns
+      a.button.large
+        | Sign Up  
+        i.fa.fa-arrow-circle-right
