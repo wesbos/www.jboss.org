@@ -19,11 +19,14 @@ module JBoss
             if !page.solution.nil? && page.relative_source_path.start_with?('/solutions')
               solution = page.solution
               solution.id = page.parent_dir
-              puts solution.id
+              
+              if File.exists?('_partials/solution-partial-' + solution.id + '.html.slim')
+                solution.has_partial = true
+              end
+              
               site.technology_solutions[solution.id] = solution
             end
           end
-          puts site.technology_solutions.values
         end
       end
 

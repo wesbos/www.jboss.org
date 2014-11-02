@@ -30,10 +30,3 @@ Every image is different therefore please consult the readme linked to each imag
 
 === Contact
 We’re there for you on IRC in the #jboss-docker channel on Freenode.
-
-
-== Additional Section Title
-Available Docker images
-
-== Additional Section
-Below you can find the list of images we have crafted for you.
