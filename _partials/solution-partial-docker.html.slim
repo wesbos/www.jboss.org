@@ -1,0 +1,55 @@
+h3.divider Available Docker Images
+| Below you can find the list of images we have crafted for you.
+
+- site.images.each do |project|
+
+  .row.solutions-body
+    .large-12.columns
+      h4 #{project.name}
+      p
+        a href='#{project.url}'
+          img src='#{project.image_url}'
+      p #{project.description}
+      a[class="small button" href='#{project.url}'] Learn more
+    .large-12.columns
+      div
+        h5 Images
+        - project.images.each do |image|
+          .row.collapse
+            .small-9.large-9.columns
+                input[type="text" id="pull-wildfly" value="docker pull #{image.name}" readonly="readonly"]
+            .small-3.large-3.columns.more-info-link[name="#{image.name.gsub('/', '_').strip}"]
+              a.button.postfix href="#"
+                span More info
+
+          div.more-info[style="clear: both; display: none;" name="#{image.name.gsub('/', '_').strip}"]
+            p #{image.description}
+
+            ul.button-group.right
+              li
+                a[class="tiny button secondary" href="https://registry.hub.docker.com/u/#{image.name}/"] Docker Hub
+              li
+                a[class="tiny button secondary" href='https://github.com/jboss/dockerfiles/blob/master/#{image.path}/Dockerfile'] Dockerfile
+              li
+                a[class="tiny button secondary" href='https://github.com/jboss/dockerfiles/blob/master/#{image.path}/README.md'] Readme
+
+
+  hr
+
+asciidoc:
+  ==== I don't see my project!
+
+  We're happy to add your project to the list. If you have a Dockerfile ready - please https://github.com/jboss/dockerfiles/pulls[open a pull request]. If you don't - https://github.com/jboss/dockerfiles/issues/new[file a new ticket] and we'll see what we can do :)
+
+
+javascript:
+  $("input[type='text']").click(function () {
+       $(this).select();
+  });
+
+  $("div.more-info-link").click(function(e) {
+    $("div.more-info[name=" + $(this).attr('name') + "]").fadeToggle(300);
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  });

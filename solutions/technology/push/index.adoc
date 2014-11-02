@@ -2,27 +2,50 @@
 :awestruct-layout: solution-detail
 
 == Overview
-Mobile Push blah blah
+Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
+Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
+Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
+Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
 
 == Left Section
-Goal
-We provide Docker images for our JBoss projects to let you focus on using them instead of worrying about packaging.
-The Docker image delivery format makes it easy to extend/reuse images. It is a good idea to use our images as the base for your own image (using the FROM command in your Dockerfile).
 
-Issues and enhancements
-If you have issues with images listed below or you have an idea on how to make them better please open a new ticket. 
-Please start the ticket name with a [image-name] prefix, eg. [jboss/wildfly].
+=== Item 1
+Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
+Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
+Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
+Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
+
+=== Item 2
+Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
+Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
+Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
+Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
 
 == Right Section
-Documentation
-Every image is different therefore please consult the readme linked to each image. If you don’t find the answer there, don’t hesitate to contact us.
 
-Contact
-We’re there for you on IRC in the #jboss-docker channel on Freenode.
+=== Item 3
+Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
+Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
+Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
+Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
+
+=== Item 4
+Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
+Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
+Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
+Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
 
 
-== Additional Section Title
-Available Docker images
+== Extra Section Title
+Something Extra About Push
 
-== Additional Section
-Below you can find the list of images we have crafted for you.
+== Extra Section
+Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
+Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
+Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
+Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
+
+Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
+Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
+Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
+Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
