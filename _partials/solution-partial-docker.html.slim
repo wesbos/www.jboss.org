@@ -41,15 +41,3 @@ asciidoc:
 
   We're happy to add your project to the list. If you have a Dockerfile ready - please https://github.com/jboss/dockerfiles/pulls[open a pull request]. If you don't - https://github.com/jboss/dockerfiles/issues/new[file a new ticket] and we'll see what we can do :)
 
-
-javascript:
-  $("input[type='text']").click(function () {
-       $(this).select();
-  });
-
-  $("div.more-info-link").click(function(e) {
-    $("div.more-info[name=" + $(this).attr('name') + "]").fadeToggle(300);
-    e.preventDefault();
-    e.stopPropagation();
-    return false;
-  });
