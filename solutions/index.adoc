@@ -1,16 +1,6 @@
-= JBoss Solutions
-:awestruct-layout: solution-overview
+= Technology Solutions
+:awestruct-layout: solution-catagory
 
-== Technology Solutions
-Say something about Technology Solutions here
-
-== Service Solutions
-Say something about Service Solutions here
-
-== Case Studies
-Say something about Case Studies here
-
-== Partners
-Say something about Partners here
-
+== Overview
+Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ea ratione, debitis nostrum numquam quibusdam quisquam saepe, impedit maxime eligendi alias, rem pariatur sunt necessitatibus. Ratione ipsam eveniet, laudantium modi minus iste accusamus rerum, facilis in commodi quo voluptatibus voluptas!
 
