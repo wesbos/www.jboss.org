@@ -18,8 +18,11 @@ title: Detail
         
 .row
   .large-19.columns
-    h3.divider #{page.solution.short_description}
-    = page._overview
+    .solution-header
+      h3 #{page.solution.short_description}
+      = partial("share.html.slim", :url => "http://pagelink.com", :title => "Page title goes here")
+      hr.divider
+      = page._overview
 
     .row
       .large-8.columns
@@ -48,7 +51,6 @@ title: Detail
         = partial("solution-partial-docker.html.slim")
 
   .large-5.columns
-    = partial("share.html.slim", :url => "http://pagelink.com", :title => "Page title goes here")
     - if page.solution.related_solutions
       h4 Related Solutions
       - for solution in page.solution.related_solutions

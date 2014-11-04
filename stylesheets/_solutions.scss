@@ -2,7 +2,7 @@
 .solution {
   margin-bottom: 20px;
   position: relative;
-  &:last-child { 
+  &:last-child.column { 
     float:left; 
   }
   img {
@@ -204,6 +204,18 @@ blockquote.speech-bubble {
 .solutions-body {
   ul,ol {
     list-style-position: inside;
+  }
+}
+
+.solution-header {
+  h3 {
+    display:inline;
+  }
+  .share-this {
+    display: inline-block;
+    width:250px;
+    float: right;
+    margin-top: -20px;
   }
 }
 

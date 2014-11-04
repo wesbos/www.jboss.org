@@ -1416,6 +1416,17 @@ span.asterisk {
   }
 }
 
+.divider .share-this {
+  width: 200px;
+  display: inline-block;
+  float: right;
+  position: relative;
+  // top: -26px;
+  p {
+    font-size: 15px;
+  }
+}
+
 .share-this-buttons > * {
   // all importants override social network defaults
   float: left;
