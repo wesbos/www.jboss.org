@@ -1,4 +1,5 @@
 name: Docker
+short_description: Docker files for JBoss projects and products.
 long_description: The Docker project revolutionizes thinking about software delivery making it easy to build and share images that include your content. We at JBoss love the idea behind Docker and ship images for our projects. Just for you.
 docs:
   description: All documentation
