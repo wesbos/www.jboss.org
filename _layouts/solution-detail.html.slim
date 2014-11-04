@@ -20,34 +20,40 @@ title: Detail
   .large-19.columns
     h3.divider
     = page._overview
-    = partial("share.html.slim", :url => "http://pagelink.com", :title => "Page title goes here")
-    
-    /.large-8.columns
-    /  img src="http://lorempixel.com/400/300"
-    /  a.button.button--clear(href="#")
-    /    i.fa.fa-arrow-circle-down 
-    /    | Download the full case study
-    /.large-16.columns
-    /  blockquote.speech-bubble
-    /    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore eos ut non soluta, obcaecati excepturi dicta error aspernatur dolorum ea quam mollitia exercitationem laudantium voluptate repellendus nostrum molestias dolor, ipsum.
-    /    cite Wes Bos, really cool guy
+
+    .row
+      .large-8.columns
+        img src="http://lorempixel.com/400/300"
+        a.button.button--clear(href="#")
+          i.fa.fa-arrow-circle-down 
+          | Download the full case study
+      .large-16.columns
+        blockquote.speech-bubble
+          p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore eos ut non soluta, obcaecati excepturi dicta error aspernatur dolorum ea quam mollitia exercitationem laudantium voluptate repellendus nostrum molestias dolor, ipsum.
+          cite Wes Bos, really cool guy
     .row.solutions-body
       .large-12.columns
         = page._left_section
       .large-12.columns
         = page._right_section
-    - if page._extra_section
-      - if page._extra_section_title
-        h3.divider#ExtraSection #{page._extra_section_title}
-      = page._extra_section
-    - if page.solution.has_partial
-      = partial("solution-partial-docker.html.slim")
+    .row
+      .large-24.columns
+        - if page._extra_section
+          - if page._extra_section_title
+            h3.divider#ExtraSection #{page._extra_section_title}
+          = page._extra_section
+    .row
+      .large-24.columns
+        - if page.solution.has_partial
+        = partial("solution-partial-docker.html.slim")
 
   .large-5.columns
-    h4 Related Solutions
-    - for solution in page.solution.related_solutions
-      a.solution-name-link(href="#{site.base_url}/solutions/#{solution}")
-        .widget.widget--solution
-          img src=cdn(site.base_url + "/images/solutions/#{solution}/thumb_300x200.png")
-          h3 #{solution}
+    = partial("share.html.slim", :url => "http://pagelink.com", :title => "Page title goes here")
+    - if page.solution.related_solutions
+      h4 Related Solutions
+      - for solution in page.solution.related_solutions
+        a.solution-name-link(href="#{site.base_url}/solutions/#{solution}")
+          .widget.widget--solution
+            img src=cdn(site.base_url + "/images/solutions/#{solution}/thumb_300x200.png")
+            h3 #{site.technology_solutions[solution].name}
 

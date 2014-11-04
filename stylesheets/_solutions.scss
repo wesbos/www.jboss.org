@@ -2,6 +2,9 @@
 .solution {
   margin-bottom: 20px;
   position: relative;
+  &:last-child { 
+    float:left; 
+  }
   img {
     width:100%;
     @include transition(all 0.7s);
