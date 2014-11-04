@@ -15,7 +15,6 @@ title: Solutions
 .row
   .large-24.columns
     p
-      a.pull-right.button Share Your Story
       = page._overview
 .row.solutions-row
   .large-24.columns
@@ -32,18 +31,6 @@ title: Solutions
           .large-12.column
             h3: Solution #{solution.name}
             p #{solution.long_description}
-            - for meta in page.solution.meta
-              | hello:
-            .solutions-meta
-              p.solution-meta
-                | Tags:
-                a(href="/") Awesome, Technology, Java
-              p.solution-meta
-                | Documentation: 
-                a(href="#{solution.docs.url}") #{solution.docs.description}
-              p.solution-meta
-                | Contains:
-              a(href="/") Awesome, Technology, Java
             a.button.shadow href="#{site.base_url}/solutions/#{solution.id}" See the solution in action!
           .large-12.column
             .slider-wrapper.solution-slider
