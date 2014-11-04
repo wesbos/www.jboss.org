@@ -12,8 +12,6 @@ title: Solutions
         a href="#{site.base_url}/technology" Technology
       li
         a href="#{site.base_url}/solutions" Solutions
-      li
-        a href="#{site.base_url}/solutions/technology" Technology Solutions
 .row
   .large-24.columns
     p
@@ -34,7 +32,8 @@ title: Solutions
           .large-12.column
             h3: Solution #{solution.name}
             p #{solution.long_description}
-
+            - for meta in page.solution.meta
+              | hello:
             .solutions-meta
               p.solution-meta
                 | Tags:
@@ -45,7 +44,7 @@ title: Solutions
               p.solution-meta
                 | Contains:
               a(href="/") Awesome, Technology, Java
-            a.button.shadow href="#{site.base_url}/solutions/technology/#{solution.id}" See the solution in action!
+            a.button.shadow href="#{site.base_url}/solutions/#{solution.id}" See the solution in action!
           .large-12.column
             .slider-wrapper.solution-slider
               .slider

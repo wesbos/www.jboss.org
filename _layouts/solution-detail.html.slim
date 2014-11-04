@@ -14,9 +14,7 @@ title: Detail
       li
         a href="#{site.base_url}/solutions" Solutions
       li
-        a href="#{site.base_url}/solutions/technology" Technology Solutions
-      li
-        a href="#{site.base_url}/solutions/technology/#{page.solution.id}" #{page.solution.name}
+        a href="#{site.base_url}/solutions/#{page.solution.id}" #{page.solution.name}
         
 .row
   .large-19.columns
@@ -48,7 +46,7 @@ title: Detail
   .large-5.columns
     h4 Related Solutions
     - for solution in page.solution.related_solutions
-      a.solution-name-link(href="#{site.base_url}/solutions/technology/#{solution}")
+      a.solution-name-link(href="#{site.base_url}/solutions/#{solution}")
         .widget.widget--solution
           img src=cdn(site.base_url + "/images/solutions/#{solution}/thumb_300x200.png")
           h3 #{solution}
