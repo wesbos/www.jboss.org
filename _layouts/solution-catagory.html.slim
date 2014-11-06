@@ -33,19 +33,22 @@ title: Solutions
             p #{solution.long_description}
             a.button.shadow href="#{site.base_url}/solutions/#{solution.id}" See the solution in action!
           .large-12.column
-            .slider-wrapper.solution-slider
-              .slider
-                .swipe-wrap
-                  - for img in [1,2,3]
-                    .slide
-                      img(src=cdn(site.base_url + "/images/slider-image#{img}.jpg"))
-            a.fn-close-overlay(href="#") &times;
-            .solutions-slider-controls
-              a.prev(href="#")
-                i.fa.fa-chevron-circle-left
-              a.next(href="#")
-                i.fa.fa-chevron-circle-right
-              span.current-slide 1
-              span of
-              span.total-slides 0 
+            - if solution.slider_images.length > 0
+              .slider-wrapper.solution-slider
+                .slider
+                  .swipe-wrap
+                    - for img in solution.slider_images
+                      .slide
+                        img(src=cdn(site.base_url + '/' + img))
+              a.fn-close-overlay(href="#") &times;
+              .solutions-slider-controls
+                a.prev(href="#")
+                  i.fa.fa-chevron-circle-left
+                a.next(href="#")
+                  i.fa.fa-chevron-circle-right
+                span.current-slide 1
+                span of
+                span.total-slides #(solution.slider_images.length)
+            - else
+              img(src=cdn(site.base_url + "/images/solutions/#{solution.id}/thumb_300x200.png"))
         

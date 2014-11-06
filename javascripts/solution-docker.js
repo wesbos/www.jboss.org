@@ -1,11 +1,7 @@
-app.solutions.docker = {
-    
-};
-
-// Event Listeners
+/*
+    Used by the Docker solution. In particular manages the show/hide of the extra Docker image information.
+ */
 $(function() {
-    
-    console.log('working');
     
     $("input[type='text']").click(function () {
         $(this).select();

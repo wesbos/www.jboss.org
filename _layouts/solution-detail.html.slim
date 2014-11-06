@@ -21,19 +21,22 @@ title: Detail
     .solution-header
       h3 #{page.solution.short_description}
       = partial("share.html.slim", :url => "http://pagelink.com", :title => "Page title goes here")
-      hr.divider
-      = page._overview
-
+    
+    hr.divider
+    
     .row
       .large-8.columns
-        img src="http://lorempixel.com/400/300"
-        a.button.button--clear(href="#")
-          i.fa.fa-arrow-circle-down 
-          | Download the full case study
-      .large-16.columns
-        blockquote.speech-bubble
-          p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore eos ut non soluta, obcaecati excepturi dicta error aspernatur dolorum ea quam mollitia exercitationem laudantium voluptate repellendus nostrum molestias dolor, ipsum.
-          cite Wes Bos, really cool guy
+        img src=cdn(site.base_url + "/images/solutions/#{page.solution.id}/thumb_400x300.png")
+        - if page.solution.image_link
+          a.button.button--clear(href="#{page.solution.image_link.url}")
+            i.fa.fa-arrow-circle-down 
+            = page.solution.image_link.description
+      - if page.solution.speech_bubble
+        .large-16.columns
+          blockquote.speech-bubble
+            p #{page.solution.speech_bubble.quote}
+            cite #{page.solution.speech_bubble.author}
+            
     .row.solutions-body
       .large-12.columns
         = page._left_section
@@ -48,7 +51,7 @@ title: Detail
     .row
       .large-24.columns
         - if page.solution.has_partial
-        = partial("solution-partial-docker.html.slim")
+          = partial("solution-partial-" + page.solution.id + ".html.slim")
 
   .large-5.columns
     - if page.solution.related_solutions

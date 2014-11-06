@@ -23,6 +23,9 @@ module JBoss
               if File.exists?('_partials/solution-partial-' + solution.id + '.html.slim')
                 solution.has_partial = true
               end
+
+              #Find slider images (if any)
+              solution.slider_images = Dir["#{File.join('images/solutions/' + solution.id, 'slider-image')}*"]
               
               site.technology_solutions[solution.id] = solution
             end
