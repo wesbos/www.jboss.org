@@ -1,10 +1,10 @@
 ---
-layout: technology-base
+layout: solution-base
 title: Solutions
 ---
 .row
   .large-24.columns
-    h2 Technology Solutions
+    h2 Solutions
 .row
   .large-24.columns
     ul.breadcrumbs
@@ -19,13 +19,13 @@ title: Solutions
 .row.solutions-row
   .large-24.columns
     ul.large-block-grid-4.small-block-grid-2
-      - for solution in site.technology_solutions.values
+      - for solution in site.solutions.values
         li.solution.large-8.column(data-open-solution="#{solution.id}")
           a.image-link: img(src=cdn(site.base_url + "/images/solutions/#{solution.id}/thumb_300x300.png"))
           a.solution-name-link(href="#")
             h3.solution-name #{solution.name}
   .solution-overlays.clearfix
-    - for solution in site.technology_solutions.values
+    - for solution in site.solutions.values
       .solution-wrap(data-solution="#{solution.id}")
         .solution-overlay.clearfix
           .large-12.column
@@ -51,4 +51,4 @@ title: Solutions
                 span.total-slides #(solution.slider_images.length)
             - else
               img(src=cdn(site.base_url + "/images/solutions/#{solution.id}/thumb_300x200.png"))
-        
+

@@ -35,7 +35,6 @@ Awestruct::Extensions::Pipeline.new do
   # parse AsciiDoc documents and create page variables out of their sections
   extension Aweplug::Extensions::Sections.new
 
-
   # Load events from a google spreadsheet
   extension Aweplug::Extensions::GoogleSpreadsheet.new(assign_to: 'events',
                                                        key: '12ZRFSz8TAay-GnNuF_5LipICmuns-HB_RcjGEPDi67k',

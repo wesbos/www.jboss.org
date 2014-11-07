@@ -1,6 +1,6 @@
 $(function() {
 
-  var solutionsOverlay;
+  var solutionsOverlay= $('.solution-overlays');
 
   /*
     Show Solutions
@@ -15,13 +15,12 @@ $(function() {
         parentPosition = el.closest('.row').offset(),
         height = el.height(),
         width = el.width();
-    solutionsOverlay = $('.solution-overlays');
 
     $('.solution-open').removeClass('solution-open');
     el.addClass('solution-open');
     
     // Toggle visibility of the ones we want
-    $('.solution-overlays').show().css('display','table');
+    solutionsOverlay.show().css('display','table');
     overlay.show();
     $('[data-solution]').not(overlay).hide();
 
