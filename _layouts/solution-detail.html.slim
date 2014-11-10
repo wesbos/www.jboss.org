@@ -56,6 +56,11 @@ title: Detail
           = partial("solution-partial-" + page.solution.id + ".html.slim")
 
   .large-5.columns
+    - if page.solution.cta
+      .widget
+        h3.widget-title #{page.solution.cta.title}
+        a.button.shadow.large(href="#{page.solution.cta.url}")
+          = page.solution.cta.description
     - if page.solution.related_solutions
       h4 Related Solutions
       - for solution in page.solution.related_solutions

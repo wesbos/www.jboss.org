@@ -4,4 +4,9 @@ long_description: Red Hat JBoss Mobile Add-On is a set of components for develop
 docs:
  description: All documentation
  url: http://aerogear.org/docs/
+cta:
+ title: Maybe put some text here to describe the following link
+ description: Try it on OpenShift
+ url: https://www.openshift.com/quickstarts/jboss-unifiedpush
+ 
 
