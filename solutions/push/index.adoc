@@ -1,51 +1,38 @@
-= Push
 :awestruct-layout: solution-detail
+:awestruct-interpolate: true
 
-== Overview
-Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
-Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
-Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
-Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
-
-== Left Section
-
-=== Item 1
-Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
-Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
-Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
-Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
-
-=== Item 2
-Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
-Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
-Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
-Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
-
-== Right Section
-
-=== Item 3
-Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
-Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
-Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
-Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
-
-=== Item 4
-Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
-Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
-Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
-Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
-
-
-== Extra Section Title
-Something Extra About Push
 
 == Extra Section
-Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
-Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
-Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
-Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
 
-Lorem ipsum dolor sit amet, noluisse verterem insolens mea ne. Usu no mundi urbanitas. 
-Te his omnis animal facilisis. Option lobortis cu sit, liber volumus qui cu. 
-Cum cu dicant fabulas maiorum, mel te veniam ancillae efficiendi. 
-Alterum dolorem vim ea, cu tollit nusquam deterruisset pri.
+=== FeedHenry
+Nearly any mobile, hybrid or web app can be developed in FeedHenry’s hosted App Studio and then deployed to multiple devices (iOS, Android, Blackberry, and Windows Phone). 
+If you prefer to build native apps, we have SDKs to support native iOS and Android development.
+Our back-end is full Node.js without limits. 
+Build complex cloud applications which connect to all your Enterprise systems. 
+Use our built-in MongoDB and Redis out of the box.
+
+* link:http://www.feedhenry.com/[FeedHenry home]
+* link:http://www.feedhenry.com/developer/[FeedHenry Developer]
+
+
+=== Unified Push 
+
+image::#{cdn(site.base_url + '/images/solutions/push/overview-image.png')}[]
+
+The Unified Push server allows developers to send native push messages to Apple's Push Notification Service (APNS) and Google's Cloud Messaging (GCM).
+It features a built-in administration console that makes it easy for developers to create and manage push related aspects of their applications for any mobile development environment.
+Includes client SDKs (iOS, Android, & Cordova), and a REST based sender service with an available Java sender library.
+For more details and links see the OpenShift xPaaS page [LINK]
+
+
+
+=== Downloads
+
+* link:http://www.replace[Client & Sender SDKs]
+* link:http://www.replace[Quickstarts]
+* link:http://www.replace[Maven Repo]
+
+=== Resoures
+
+* link:http://www.replace[Admin Guide]
+* link:http://www.replace[xPaaS page]

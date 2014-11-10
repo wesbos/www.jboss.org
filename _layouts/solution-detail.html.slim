@@ -37,14 +37,16 @@ title: Detail
             p #{page.solution.speech_bubble.quote}
             cite #{page.solution.speech_bubble.author}
             
-    .row.solutions-body
-      .large-12.columns
-        = page._left_section
-      .large-12.columns
-        = page._right_section
-    .row
-      .large-24.columns
-        - if page._extra_section
+    - if page._left_section && page._right_section
+      .row.solutions-body
+        .large-12.columns
+          = page._left_section
+        .large-12.columns
+          = page._right_section
+        
+    - if page._extra_section
+      .row
+        .large-24.columns
           - if page._extra_section_title
             h3.divider#ExtraSection #{page._extra_section_title}
           = page._extra_section
