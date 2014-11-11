@@ -36,7 +36,11 @@ title: Detail
           blockquote.speech-bubble
             p #{page.solution.speech_bubble.quote}
             cite #{page.solution.speech_bubble.author}
-            
+    - if page._overview
+      .row
+        .large-24.columns
+          = page._overview
+    
     - if page._left_section && page._right_section
       .row.solutions-body
         .large-12.columns

@@ -1,38 +1,36 @@
 :awestruct-layout: solution-detail
 :awestruct-interpolate: true
 
-
-== Extra Section
-
-=== FeedHenry
-Nearly any mobile, hybrid or web app can be developed in FeedHenry’s hosted App Studio and then deployed to multiple devices (iOS, Android, Blackberry, and Windows Phone). 
-If you prefer to build native apps, we have SDKs to support native iOS and Android development.
-Our back-end is full Node.js without limits. 
-Build complex cloud applications which connect to all your Enterprise systems. 
-Use our built-in MongoDB and Redis out of the box.
-
-* link:http://www.feedhenry.com/[FeedHenry home]
-* link:http://www.feedhenry.com/developer/[FeedHenry Developer]
-
-
-=== Unified Push 
-
-image::#{cdn(site.base_url + '/images/solutions/push/overview-image.png')}[]
+== Overview
 
 The Unified Push server allows developers to send native push messages to Apple's Push Notification Service (APNS) and Google's Cloud Messaging (GCM).
 It features a built-in administration console that makes it easy for developers to create and manage push related aspects of their applications for any mobile development environment.
 Includes client SDKs (iOS, Android, & Cordova), and a REST based sender service with an available Java sender library.
 For more details and links see the OpenShift xPaaS page [LINK]
 
+== Left Section
 
+=== Documentation
+
+|====
+|Documentation|Available Formats
+|Overview|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/overview.asciidoc[HTML]
+|Admin UI|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/admin-ui.asciidoc[HTML]
+|Server Administration|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/server-administration.asciidoc[HTML]
+|====
+
+== Right Section
 
 === Downloads
 
-* link:http://www.replace[Client & Sender SDKs]
-* link:http://www.replace[Quickstarts]
-* link:http://www.replace[Maven Repo]
+|====
+|Version|Release Date|Download
+|1.0.0.Beta1|2014-11-17|link:http://www.replace[Client & Sender SDKs]
+|||link:http://www.replace[Quickstarts]
+|||link:http://www.replace[Maven Repo]
+|====
 
-=== Resoures
+== Extra Section
 
-* link:http://www.replace[Admin Guide]
-* link:http://www.replace[xPaaS page]
+image::#{cdn(site.base_url + '/images/solutions/push/overview-image.png')}[]
+
