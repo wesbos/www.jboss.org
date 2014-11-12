@@ -1,5 +1,5 @@
 name: Docker
-short_description: Docker Files for JBoss Projects and Products.
+sub_title: Docker Files for JBoss Projects and Products.
 long_description: The Docker project revolutionizes thinking about software delivery making it easy to build and share images that include your content. We at JBoss love the idea behind Docker and ship images for our projects. Just for you.
 image_link:
   description: Download something
@@ -16,7 +16,7 @@ meta:
     url: https://github.com/jboss/dockerfiles
 related_solutions:
   - docker
-  - push
+  - unifiedpush
 cta:
   title: Maybe put some text here to describe the following link
   description: Some CTA

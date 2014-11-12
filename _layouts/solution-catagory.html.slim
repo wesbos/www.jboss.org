@@ -31,6 +31,10 @@ title: Solutions
           .large-12.column
             h3: Solution #{solution.name}
             p #{solution.long_description}
+            - if solution.overview_links
+              - for item in solution.overview_links do
+                p.solution-meta
+                  a(href="#{item.url}") #{item.description}
             a.button.shadow href="#{site.base_url}/solutions/#{solution.id}" See the solution in action!
           .large-12.column
             - if solution.slider_images.length > 0
