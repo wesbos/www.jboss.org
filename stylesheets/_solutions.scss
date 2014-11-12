@@ -207,6 +207,43 @@ blockquote.speech-bubble {
   }
 }
 
+.more-info-link {
+  input[type="text"] {
+    width: 70%;
+    display: inline-block;
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+    padding:5px;
+    line-height: 1.5;
+    height:auto;
+    font-size: 14px;
+  }
+  a.button {
+    display:inline-block;
+    width:30%;
+    float: right;
+    margin: 0;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    box-shadow:none;
+    padding:5px;
+    line-height: 1.5;
+    height:auto;
+    font-size: 14px;
+    border:1px solid transparent;
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.more-info {
+  margin-bottom: 10px;
+  a {
+    margin-right: 10px;
+  }
+}
+
 .solution-header {
   h3 {
     display:inline;

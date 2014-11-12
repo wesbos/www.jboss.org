@@ -7,10 +7,9 @@ $(function() {
         $(this).select();
     });
     
-    $("div.more-info-link").click(function(e) {
-        $("div.more-info[name=" + $(this).attr('name') + "]").toggle();
+    $("div.more-info-link a").click(function(e) {
         e.preventDefault();
-        e.stopPropagation();
-        return false;
+        var el = $("div.more-info[name=" + $(this).parent().attr('name') + "]");
+        el.slideToggle();
     });
 });

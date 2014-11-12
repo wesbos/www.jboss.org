@@ -15,23 +15,16 @@ h3.divider Available Docker Images
       div
         h5 Images
         - project.images.each do |image|
-          .row.collapse
-            .small-9.large-9.columns
-                input[type="text" id="pull-wildfly" value="docker pull #{image.name}" readonly="readonly"]
-            .small-3.large-3.columns.more-info-link[name="#{image.name.gsub('/', '_').strip}"]
-              a.button.postfix href="#"
-                span More info
+          .more-info-link[name="#{image.name.gsub('/', '_').strip}"]
+            input[type="text" id="pull-wildfly" value="docker pull #{image.name}" readonly="readonly"]
+            a.button.postfix href="#" More info
 
           div.more-info[name="#{image.name.gsub('/', '_').strip}" hidden]
             p #{image.description}
 
-            ul.button-group.right
-              li
-                a[class="tiny button secondary" href="https://registry.hub.docker.com/u/#{image.name}/"] Docker Hub
-              li
-                a[class="tiny button secondary" href='https://github.com/jboss/dockerfiles/blob/master/#{image.path}/Dockerfile'] Dockerfile
-              li
-                a[class="tiny button secondary" href='https://github.com/jboss/dockerfiles/blob/master/#{image.path}/README.md'] Readme
+            a[href="https://registry.hub.docker.com/u/#{image.name}/"] Docker Hub
+            a[href='https://github.com/jboss/dockerfiles/blob/master/#{image.path}/Dockerfile'] Dockerfile
+            a[href='https://github.com/jboss/dockerfiles/blob/master/#{image.path}/README.md'] Readme
 
 
   hr
