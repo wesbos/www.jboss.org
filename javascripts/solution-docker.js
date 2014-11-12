@@ -8,7 +8,7 @@ $(function() {
     });
     
     $("div.more-info-link").click(function(e) {
-        $("div.more-info[name=" + $(this).attr('name') + "]").fadeToggle(300);
+        $("div.more-info[name=" + $(this).attr('name') + "]").toggle().removeAttr('hidden').fadeToggle(300);
         e.preventDefault();
         e.stopPropagation();
         return false;

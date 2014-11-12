@@ -22,7 +22,7 @@ h3.divider Available Docker Images
               a.button.postfix href="#"
                 span More info
 
-          div.more-info[style="clear: both; display: none;" name="#{image.name.gsub('/', '_').strip}"]
+          div.more-info[name="#{image.name.gsub('/', '_').strip}" hidden]
             p #{image.description}
 
             ul.button-group.right
