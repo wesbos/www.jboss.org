@@ -28,7 +28,8 @@ For more details and links see the OpenShift xPaaS page [LINK]
 |Version|Release Date|Download
 |1.0.0.Beta1|2014-11-17|link:http://www.replace[Client & Sender SDKs]
 |||link:http://www.replace[Quickstarts]
-|||link:http://www.replace[Maven Repo]
+|||link:http://www.replace[SDK Source]
+|||link:http://www.replace[SDK Javadoc]
 |====
 
 == Extra Section

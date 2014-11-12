@@ -1,6 +1,8 @@
 name: Unified Push
+sub_title: You can have a sub-title here if you want
 long_description: Red Hat JBoss Mobile Add-On is a set of components for developing and supporting hybrid, native and push-enabled mobile applications. JBoss Mobile Add-On provides resources for creating and connecting mobile applications to your server-side Java EE infrastructure.
 cta:
+  title: You can put some text here if you want.
   description: Try it on OpenShift
   url: https://www.openshift.com/quickstarts/jboss-unifiedpush
 intro_video: https://www.youtube.com/watch?v=ZFZlphKlGqM

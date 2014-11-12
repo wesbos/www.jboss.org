@@ -13,6 +13,8 @@ module JBoss
             if !page.solution.nil? && page.relative_source_path.start_with?('/solutions')
               solution = page.solution
               solution.id = page.parent_dir
+
+              page.output_path = '/' + solution.id + "/index.html"
               
               if File.exists?('_partials/solution-partial-' + solution.id + '.html.slim')
                 solution.has_partial = true

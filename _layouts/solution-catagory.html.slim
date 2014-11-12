@@ -35,7 +35,7 @@ title: Solutions
               - for item in solution.overview_links do
                 p.solution-meta
                   a(href="#{item.url}") #{item.description}
-            a.button.shadow href="#{site.base_url}/solutions/#{solution.id}" See the solution in action!
+            a.button.shadow href="#{site.base_url}/#{solution.id}" See the solution in action!
           .large-12.column
             - if solution.slider_images.length > 0
               .slider-wrapper.solution-slider
