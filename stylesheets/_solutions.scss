@@ -119,6 +119,9 @@ $arrow-size : 20px;
   .solution-meta {
     margin: 0;
     font-weight: 600;
+    &:last-of-type {
+      margin-bottom: 1.25rem;
+    }
   }
   .slide {
     img {
@@ -253,6 +256,19 @@ blockquote.speech-bubble {
     width:250px;
     float: right;
     margin-top: -20px;
+  }
+}
+
+.unifiedpush-downloads {
+  h4.divider {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  a.download {
+    top: -0.5rem;
+    position: relative;
+    display: block;
+    text-align: right;
   }
 }
 
