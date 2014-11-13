@@ -21,7 +21,7 @@ module JBoss
               end
 
               #Find slider images (if any)
-              solution.slider_images = Dir["#{File.join('images/solutions/' + solution.id, 'slider-image')}*"]
+              solution.slider_images = Dir["#{File.join('images/solutions/' + solution.id, 'slider-image')}*"].sort
               
               site.solutions[solution.id] = solution
             end
