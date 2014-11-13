@@ -126,6 +126,11 @@ Awestruct::Extensions::Pipeline.new do
                                                           excludes: ['_fuse-quickstarts/template'],
                                                           product: 'fuse')
 
+  extension Aweplug::Extensions::Kramdown::Quickstart.new(repository: '_unifiedpush-quickstarts',
+                                                          layout: 'get-started-item',
+                                                          output_dir: '/quickstarts/unifiedpush',
+                                                          product: 'unifiedpush')
+
   extension JBoss::Developer::Extensions::Stacks.new 'stacks.yaml', 'get-started-item', '_jdf-stack'
   extension JBoss::Developer::Extensions::AsciidoctorExtensionRegister.new
   
