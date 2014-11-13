@@ -3,36 +3,23 @@
 
 == Overview
 
-=== Overview
 The Unified Push server allows developers to send native push messages to Apple's Push Notification Service (APNS) and Google's Cloud Messaging (GCM).
 It features a built-in administration console that makes it easy for developers to create and manage push related aspects of their applications for any mobile development environment.
 Includes client SDKs (iOS, Android, & Cordova), and a REST based sender service with an available Java sender library.
 For more details and links see the OpenShift xPaaS page [LINK]
 
-== Left Section
-
-=== Documentation
-
-|====
-|Documentation|Available Formats
-|Overview|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/overview.asciidoc[HTML]
-|Admin UI|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/admin-ui.asciidoc[HTML]
-|Server Administration|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/server-administration.asciidoc[HTML]
-|====
-
-== Right Section
-
-=== Downloads
-
-|====
-|Version|Release Date|Download
-|1.0.0.Beta1|2014-11-17|link:http://www.replace[Client & Sender SDKs]
-|||link:http://www.replace[Quickstarts]
-|||link:http://www.replace[SDK Source]
-|||link:http://www.replace[SDK Javadoc]
-|====
 
 == Extra Section
+
+=== Downloads and Documentation
+
+|====
+|Version|Release Date|Downloads|Documentation
+|1.0.0.Beta1|2014-11-17|link:http://www.replace[Client & Sender SDKs]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/overview.asciidoc[Overview]
+|||link:http://www.replace[Quickstarts]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/admin-ui.asciidoc[Adminstration UI]
+|||link:http://www.replace[SDK Source]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/server-administration.asciidoc[Server Admininistration]
+|||link:http://www.replace[SDK Javadoc]|
+|====
 
 image::#{cdn(site.base_url + '/images/solutions/unifiedpush/overview-image.png')}[]
 

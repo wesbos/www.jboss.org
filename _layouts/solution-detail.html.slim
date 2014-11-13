@@ -29,8 +29,15 @@ layout: solution-base
 
     - if page.solution.intro_video
       .row
-        .large-16.columns
-          = video_player(video(page.solution.intro_video))
+        .large-12.columns
+          = page._overview
+          .row
+            .large-12.columns
+              .widget
+                a.button.shadow.large(href="https://www.openshift.com/quickstarts/jboss-unifiedpush")
+                  | Try it on OpenShift
+        .large-12.columns
+          = video_player(video("https://www.youtube.com/watch?v=ZFZlphKlGqM"))
     - else
       .row
         .large-8.columns
@@ -44,10 +51,6 @@ layout: solution-base
             blockquote.speech-bubble
               p #{page.solution.speech_bubble.quote}
               cite #{page.solution.speech_bubble.author}
-    - if page._overview
-      .row
-        .large-24.columns
-          = page._overview
     
     - if page._left_section && page._right_section
       .row.solutions-body
@@ -68,12 +71,6 @@ layout: solution-base
           = partial("solution-partial-" + page.solution.id + ".html.slim")
 
   .large-5.columns
-    - if page.solution.cta
-      .widget
-        - if page.solution.cta.title
-          h3.widget-title #{page.solution.cta.title}
-        a.button.shadow.large(href="#{page.solution.cta.url}")
-          = page.solution.cta.description
     - if page.solution.related_solutions
       h4 Related Solutions
       - for solution in page.solution.related_solutions
