@@ -37,6 +37,7 @@ title: Solutions
                   a(href="#{item.url}") #{item.description}
             a.button.shadow href="#{site.base_url}/#{solution.id}" See the solution in action!
           .large-12.column
+            a.fn-close-overlay(href="#") &times;
             - if solution.slider_images.length > 0
               .slider-wrapper.solution-slider
                 .slider
@@ -44,7 +45,6 @@ title: Solutions
                     - for img in solution.slider_images
                       .slide
                         img(src=cdn(site.base_url + '/' + img))
-              a.fn-close-overlay(href="#") &times;
               .solutions-slider-controls
                 a.prev(href="#")
                   i.fa.fa-chevron-circle-left
@@ -54,5 +54,5 @@ title: Solutions
                 span of
                 span.total-slides #(solution.slider_images.length)
             - else
-              img(src=cdn(site.base_url + "/images/solutions/#{solution.id}/thumb_300x200.png"))
+              img(src=cdn(site.base_url + "/images/solutions/#{solution.id}/thumb_400x300.png"))
 

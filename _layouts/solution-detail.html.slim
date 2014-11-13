@@ -41,7 +41,8 @@ layout: solution-base
               p #{page.solution.speech_bubble.quote}
               cite #{page.solution.speech_bubble.author}
           - else
-            = page._overview
+            .solution-intro
+              = page._overview
          
     - if page._header
       .row

@@ -105,6 +105,9 @@ $arrow-size : 20px;
       z-index: 2;
     }
   }
+  img {
+    width:100%;
+  }
 }
 .solutions-meta {
   margin-bottom: 20px;
@@ -133,6 +136,12 @@ $arrow-size : 20px;
 .solution-wrap {
   display:table-cell;
   vertical-align: middle;
+}
+
+.solution-intro {
+  p {
+    font-size: emCalc(20);
+  }
 }
 
 .solutions-slider-controls {
@@ -280,6 +289,7 @@ blockquote.speech-bubble {
   }
   .solution-wrap {
     padding: 0;
+    width: 100%;
   }
   .solution-overlay {
     position: absolute;

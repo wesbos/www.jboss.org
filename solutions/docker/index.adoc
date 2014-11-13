@@ -6,7 +6,7 @@ The http://www.docker.com/[Docker project] revolutionizes thinking about softwar
 We at http://jboss.org/[JBoss] love the idea behind Docker and ship images for our projects. 
 Just for you.
 
-Pssst. If you’re new to Docker please take 8 minutes to http://www.docker.com/whatisdocker/[watch this introduction to Docker]. And of course http://www.docker.com/tryit/[give it a try]!
+Pssst. If you’re new to Docker please take 8 minutes to http://www.docker.com/whatisdocker/[watch this introduction to Docker]. And of course http://www.docker.com/tryit/[give it a try!]
 
 
 
@@ -16,15 +16,16 @@ Pssst. If you’re new to Docker please take 8 minutes to http://www.docker.com/
 We provide Docker images for our http://www.jboss.org/projects/[JBoss projects] to let you focus on using them instead of worrying about packaging.
 The Docker image delivery format makes it easy to extend/reuse images. It is a good idea to use our images as the base for your own image (using the `FROM` command in your http://docs.docker.com/reference/builder/[Dockerfile]).
 
-=== Issues and enhancements
-If you have issues with images listed below or you have an idea on how to make them better please ohttps://github.com/jboss/dockerfiles/issues/new[pen a new ticket]. 
-Please start the ticket name with a `[image-name]` prefix, eg. `[jboss/wildfly]`.
+=== Documentation
+Every image is different therefore please consult the readme linked to each image. If you don’t find the answer there, don’t hesitate to contact us.
 
 
 == Right Section
 
-=== Documentation
-Every image is different therefore please consult the readme linked to each image. If you don’t find the answer there, don’t hesitate to contact us.
+=== Issues and enhancements
+If you have issues with images listed below or you have an idea on how to make them better please ohttps://github.com/jboss/dockerfiles/issues/new[pen a new ticket]. 
+Please start the ticket name with a `[image-name]` prefix, eg. `[jboss/wildfly]`.
+
 
 === Contact
 We’re there for you on IRC in the `#jboss-docker` channel on Freenode.
