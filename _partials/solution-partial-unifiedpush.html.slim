@@ -1,12 +1,11 @@
 .row
   .large-12.columns
-    h2 Overview
     | The Unified Push server allows developers to send native push messages to Apple's Push Notification Service (APNS) and Google's Cloud Messaging (GCM).
       It features a built-in administration console that makes it easy for developers to create and manage push related aspects of their applications for any mobile development environment.
       Includes client SDKs (iOS, Android, & Cordova), and a REST based sender service with an available Java sender library.
       For more details and links see the OpenShift xPaaS page [LINK]
     .row
-      .large-12.columns
+      .large-18.columns
         .widget
           a.button.shadow.large(href="https://www.openshift.com/quickstarts/jboss-unifiedpush")
             | Try it on OpenShift
@@ -14,15 +13,34 @@
     = video_player(video("https://www.youtube.com/watch?v=ZFZlphKlGqM"))
 .row
   .large-24.columns
+    h3.divider Unified Push in Action
+    .row
+      .large-24.columns
+        | The following image shows how the Unified Push server enables applications to send native push messages to Apple's Push Notification Service (APNS) and Google's Cloud Messaging (GCM).
+    .row
+      .large-24.columns
+        img src=cdn(site.base_url + "/images/solutions/unifiedpush/overview-image.png")
+        
+  .large-24.columns
     h3.divider Downloads and Documentation
+    .row
+      .large-12.columns
+        h4 Client Documentation
+        | This documentation covers the client API for the JBoss Unified Push server.
+        a href="https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-clients-doc.zip" Download
+        h4 Server Documentation
+        | This PDF documentation covers the installation and administration of a JBoss Unified Push server.
+        a href="http://docs.jboss.org/unifiedpush/unifiedpush.pdf" Download
+        h4 Quickstarts
+        | The JBoss Unified Push quickstarts are ready-to-assemble applications, provided in a variety of mobile API formats.
+        a href="https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-quickstarts.zip" Download
+      .large-12.columns
+        h4 Client and Sender SDKs
+        | This archive contains the JBoss Unified Push client libraries. 
+          Each library is ready-to-use and provides functionality for developing client and server applications that interface with the Unified Push Server.
+        a href="https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-clients.zip" Download
+        h4 Maven Repository
+        | This archive contains JBoss Unified Push Maven repository artifacts.
+        a href="https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-maven-repository.zip" Download
 
-asciidoc:
-  [width="100%"]
-  |====
-  |Version|Release Date|Downloads|Documentation
-  |1.0.0.Beta1|2014-11-17|link:https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-clients.zip[Client & Sender SDKs]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/overview.asciidoc[Overview]
-  |||link:https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-clients-doc.zip[Client Docs]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/admin-ui.asciidoc[Adminstration UI]
-  |||link:https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-quickstarts.zip[Quickstarts]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/server-administration.asciidoc[Server Admininistration]
-  |||link:https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-maven-repository.zip[Maven Repo]|
-  |====
-  image::#{cdn(site.base_url + '/images/solutions/unifiedpush/overview-image.png')}[]
+        
