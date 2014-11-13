@@ -27,7 +27,7 @@ layout: solution-base
     
     hr.divider
 
-    - if page.solution.speech_bubble
+    - if page.solution.speech_bubble || page._overview
       .row
         .large-8.columns
           img src=cdn(site.base_url + "/images/solutions/#{page.solution.id}/thumb_400x300.png")
@@ -35,11 +35,19 @@ layout: solution-base
             a.button.button--clear(href="#{page.solution.image_link.url}")
               i.fa.fa-arrow-circle-down 
               = page.solution.image_link.description
-        - if page.solution.speech_bubble
-          .large-16.columns
+        .large-16.columns
+          - if page.solution.speech_bubble
             blockquote.speech-bubble
               p #{page.solution.speech_bubble.quote}
               cite #{page.solution.speech_bubble.author}
+          - else
+            p.textcalloutlarge
+              = page._overview
+         
+    - if page._header
+      .row
+        .large-24.columns
+          = page._header
     
     - if page._left_section && page._right_section
       .row.solutions-body

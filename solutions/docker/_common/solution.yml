@@ -1,17 +1,11 @@
 name: Docker
 sub_title: Docker Files for JBoss Projects and Products.
 long_description: The Docker project revolutionizes thinking about software delivery making it easy to build and share images that include your content. We at JBoss love the idea behind Docker and ship images for our projects. Just for you.
-image_link:
-  description: Download something
-  url: http://www.docker.io
-speech_bubble:
-  quote: We don't have a quote for Docker. However, I'm putting this here as I don't know what to show instead!
-  author: Paul
 meta:
   docs:
-    description: All documentation
-    url: https://docs.docker.com/
+    description: JBoss Docker Files
+    url: https://github.com/jboss-dockerfiles
   source:
-    description: Source on GitHub
-    url: https://github.com/jboss/dockerfiles
+    description: JBoss on Docker Hub
+    url: https://registry.hub.docker.com/repos/jboss/
 
