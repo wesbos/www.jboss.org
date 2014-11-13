@@ -204,7 +204,8 @@ blockquote.speech-bubble {
   }
 }
 
-.solutions-body {
+.row.solutions-body {
+  margin-top: 1.24rem;
   ul,ol {
     list-style-position: inside;
   }
