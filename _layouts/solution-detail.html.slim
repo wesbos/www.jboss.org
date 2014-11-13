@@ -27,18 +27,7 @@ layout: solution-base
     
     hr.divider
 
-    - if page.solution.intro_video
-      .row
-        .large-12.columns
-          = page._overview
-          .row
-            .large-12.columns
-              .widget
-                a.button.shadow.large(href="https://www.openshift.com/quickstarts/jboss-unifiedpush")
-                  | Try it on OpenShift
-        .large-12.columns
-          = video_player(video("https://www.youtube.com/watch?v=ZFZlphKlGqM"))
-    - else
+    - if page.solution.speech_bubble
       .row
         .large-8.columns
           img src=cdn(site.base_url + "/images/solutions/#{page.solution.id}/thumb_400x300.png")

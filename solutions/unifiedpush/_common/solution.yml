@@ -1,5 +1,4 @@
 name: Unified Push
-sub_title: Overview
 long_description: The JBoss Unified Push server allows developers to send native push messages to Apple's Push Notification Service (APNS) and Google's Cloud Messaging (GCM). It features a built-in administration console that makes it easy for developers to create and manage the push related aspects of their applications for any mobile development environment.
 intro_video: https://www.youtube.com/watch?v=ZFZlphKlGqM
 overview_links:

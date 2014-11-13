@@ -1,0 +1,28 @@
+.row
+  .large-12.columns
+    h2 Overview
+    | The Unified Push server allows developers to send native push messages to Apple's Push Notification Service (APNS) and Google's Cloud Messaging (GCM).
+      It features a built-in administration console that makes it easy for developers to create and manage push related aspects of their applications for any mobile development environment.
+      Includes client SDKs (iOS, Android, & Cordova), and a REST based sender service with an available Java sender library.
+      For more details and links see the OpenShift xPaaS page [LINK]
+    .row
+      .large-12.columns
+        .widget
+          a.button.shadow.large(href="https://www.openshift.com/quickstarts/jboss-unifiedpush")
+            | Try it on OpenShift
+  .large-12.columns
+    = video_player(video("https://www.youtube.com/watch?v=ZFZlphKlGqM"))
+.row
+  .large-24.columns
+    h3.divider Downloads and Documentation
+
+asciidoc:
+  [width="100%"]
+  |====
+  |Version|Release Date|Downloads|Documentation
+  |1.0.0.Beta1|2014-11-17|link:http://www.replace[Client & Sender SDKs]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/overview.asciidoc[Overview]
+  |||link:http://www.replace[Quickstarts]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/admin-ui.asciidoc[Adminstration UI]
+  |||link:http://www.replace[SDK Source]|link:https://github.com/matzew/aerogear.org/blob/Product_Images/docs/unifiedpush/ups_userguide/server-administration.asciidoc[Server Admininistration]
+  |||link:http://www.replace[SDK Javadoc]|
+  |====
+  image::#{cdn(site.base_url + '/images/solutions/unifiedpush/overview-image.png')}[]
