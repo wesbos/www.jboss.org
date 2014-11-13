@@ -14,10 +14,4 @@ meta:
   source:
     description: Source on GitHub
     url: https://github.com/jboss/dockerfiles
-related_solutions:
-  - docker
-  - unifiedpush
-cta:
-  title: Maybe put some text here to describe the following link
-  description: Some CTA
-  url: https://www.blah.com
+
