@@ -1,38 +1,38 @@
-div.pagination-centered
-  ul.pagination
+div
+  pre(style="word-wrap:break-word")
+    | {{filters}}
+  .developer-material-results
+    .pagination-centered
+      ul.pagination
+        li.prev.arrow(ng-class="{unavailable: paginate.currentPage < 2}")
+          a(ng-click="paginate(paginate.currentPage - 1)") &laquo;
+        li(ng-repeat="page in paginate.pagesArray track by $index" ng-class="{current: page == paginate.currentPage}")
+          a(ng-click="paginate(page)")
+            | {{page}}
+        li.prev.arrow(ng-class="{unavailable: paginate.currentPage >= paginate.pages}")
+          a(ng-click="paginate(paginate.currentPage + 1)") &raquo;
 
-ul.results.small-block-grid-2.large-block-grid-3
-  / Results will be placed here via JS
+    ul.small-block-grid-2.large-block-grid-3
+      li.material(ng-repeat="item in data.displayedMaterials")
+        div(class="get-started-placeholder-{{item.fields.sys_type}}")
+          / Thumbnail
+          img(ng-src="{{item | thumbnailURL}}")
+          / Experimental Banner
+          a.banner.experimental(ng-show="item.fields.experimental")
+          / Premium Banner
+          a.banner.premium(ng-show="item.fields.sys_url_view | isPremium")
+          / Badges
+          span.label(class="material-level-{{item.fields.level}}" ng-show="item.fields.duration") {{ item.fields.duration | HHMMSS}}
+          span.label(class="material-level-{{item.fields.level}}" ng-show="item.fields.level") {{ item.fields.level }}
+          / Material Name
+          h4
+            | {{item.fields.sys_title}}
 
-/ Layout — Keep this for reference
-/ ul.results.small-block-grid-2.large-block-grid-3
-/   |
-/   - page.max_results ||= 6
-/   - page.max_results.times do |material|
-/     li.material
-/       - if material === 5
-/         a.banner.experimental(href="#") Experimental
-/       - if material === 1
-/         a.banner.premium(href="#") Premium 
-/       a(href="#")
-/         img(src="/images/materials-thumb1.jpg")
-/       span.label.material-duration 04:54
-/       span.label.material-level-beginner Beginner
-/       h4: a(href="#") JBoss EAP 6 Administration 
-/       p.author
-/         | Author: 
-/         a(href="#") John Smith
-/       p.material-datestamp Added 28 2014 9:15pm
-/       p.rating
-/         | Video
-/         i.fa.fa-star
-/         i.fa.fa-star
-/         i.fa.fa-star
-/         i.fa.fa-star-half-o
-/         i.fa.fa-star-o
-/       .body
-/         p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rutrum nec sem ac vehicula...
+          / timestamp
+          p.material-datestamp
+            | {{item.fields.sys_created | timeAgo}}
 
-div.pagination-centered
-  ul.pagination
-
+          / Description
+          p
+            | {{item.fields.sys_description | limitTo : 300}}
+            | &hellip;

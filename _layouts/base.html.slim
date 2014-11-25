@@ -183,6 +183,7 @@ body(class="#{page.url.gsub('/','').split('.').first || 'home'} #{page.body_clas
   
   / Page Experiments
   script src="//www.google-analytics.com/cx/api.js?experiment=moRTWrZ2RgCt2XT5fJPqrQ"
+  script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js"
   = javascripts "bottom" do
     / Load jQuery, CORS support for jquery (IE 8/9)
     script src="#{site.base_url}/javascripts/vendor/jquery.js"
@@ -196,7 +197,8 @@ body(class="#{page.url.gsub('/','').split('.').first || 'home'} #{page.body_clas
     / Now load anything that is going to query the DCP
     script src="#{site.base_url}/javascripts/dcp.js"
     script src="#{site.base_url}/javascripts/buzz.js"
-    script src="#{site.base_url}/javascripts/developer-materials.js"
+    / script src="#{site.base_url}/javascripts/developer-materials.js"
+    script src="#{site.base_url}/javascripts/developer-materials.angular.js"
     script src="#{site.base_url}/javascripts/projects.js"
     script src="#{site.base_url}/javascripts/books.js"
     script src="#{site.base_url}/javascripts/rating.js"
