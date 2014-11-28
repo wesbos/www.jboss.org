@@ -8,6 +8,8 @@ layout: product-base
 //Store the DCP Project code in a div, so that it can be read by connectors.js when deciding which target_product to filter on
 span[data-target-product='#{page.product.dcp_project_code}']
 
+span[data-order-by='sys_description']
+
 .large-18.column
   .featured-projects
     span.featured-connector-ids(hidden) #{page.product.featured_connectors}
@@ -17,6 +19,11 @@ span[data-target-product='#{page.product.dcp_project_code}']
   h2.divider#overview
     | All Connectors
     span.label#connectors-results-label
+  p
+    span.link-list
+      | Order By |
+      a.order-priority href="#" Importance
+      a.order-alpha href="#" Alphabetically
   = page._overview
 
   ul.small-block-grid-2.large-block-grid-4.medium-block-grid-3.connector-results
