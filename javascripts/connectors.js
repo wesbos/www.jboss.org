@@ -32,17 +32,16 @@ app.connectors = {
         var targetProductFilter = $('[data-target-product]').data('target-product');
         app.connectors.connectorFilter(null, $('ul.connector-results'), targetProductFilter, null, 'sys_description');
 
-        $('a.order-priority').removeAttribute("href");
-        $('a.order-alpha').setAttribute("href");
+        $('.connectors-order a').removeClass('active');
+        $('.order-priority').addClass('active');
     },
 
     orderByAlpha: function(e) {
         e.preventDefault();
         var targetProductFilter = $('[data-target-product]').data('target-product');
         app.connectors.connectorFilter(null, $('ul.connector-results'), targetProductFilter, null, 'sys_title');
-        
-        $('a.order-alpha').removeAttribute("href");
-        $('a.order-priority').setAttribute("href");
+        $('.connectors-order a').removeClass('active');
+        $('.order-alpha').addClass('active');
     },
 
     connectorFilter : function(keyword, container, target_product, thumbnailSize, orderBy) {

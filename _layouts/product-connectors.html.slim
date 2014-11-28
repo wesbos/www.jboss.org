@@ -19,11 +19,14 @@ span[data-order-by='sys_description']
   h2.divider#overview
     | All Connectors
     span.label#connectors-results-label
-  p
-    span.link-list
-      | Order By |
-      a.order-priority href="#" Importance
-      a.order-alpha href="#" Alphabetically
+  p.link-list.connectors-order
+    strong Order By
+    a.active.order-priority href="#"
+      i.fa.fa-sort-amount-desc
+      |  Importance
+    a.order-alpha href="#"
+      i.fa.fa-sort-alpha-asc 
+      |  Alphabetically
   = page._overview
 
   ul.small-block-grid-2.large-block-grid-4.medium-block-grid-3.connector-results
