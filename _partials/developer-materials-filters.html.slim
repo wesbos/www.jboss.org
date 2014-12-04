@@ -1,6 +1,6 @@
 h4.filter-toggle
   | Filters
-  a.filters-clear(href="#") Clear All
+  a.filters-clear(ng-click="filters.clear()") Clear All
 button.filters-apply.filter-toggle Apply
 form.dev-mat-filters(method="GET" action="")
   .filter-block
@@ -9,25 +9,25 @@ form.dev-mat-filters(method="GET" action="")
   .filter-block
    h5.show-more Rating
    .filter-block-inputs
-     label(for="filter-rating")
+     label(for="filter-rating" ng-class="{'filter-rating-active': filters.sys_rating_avg >= 1}")
        input(type="radio" name="filter-rating" ng-model="filters.sys_rating_avg" value="1")
-     label(for="filter-rating")
+     label(for="filter-rating" ng-class="{'filter-rating-active': filters.sys_rating_avg >= 2}")
        input(type="radio" name="filter-rating" ng-model="filters.sys_rating_avg" value="2")
-     label(for="filter-rating")
+     label(for="filter-rating" ng-class="{'filter-rating-active': filters.sys_rating_avg >= 3}")
        input(type="radio" name="filter-rating" ng-model="filters.sys_rating_avg" value="3")
-     label(for="filter-rating")
+     label(for="filter-rating" ng-class="{'filter-rating-active': filters.sys_rating_avg >= 4}")
        input(type="radio" name="filter-rating" ng-model="filters.sys_rating_avg" value="4")
-     label(for="filter-rating")
+     label(for="filter-rating" ng-class="{'filter-rating-active': filters.sys_rating_avg >= 5}")
        input(type="radio" name="filter-rating" ng-model="filters.sys_rating_avg" value="5")
 
   .filter-block.filter-block-checkboxes
     h5.show-more Topics
     .filter-block-inputs
       / Chosen Select Box for Desktops
-      select(name="filter-topic[]" ng-model="filters.topic" multiple="true")
+      select(ng-model="filters.sys_tags" multiple="true")
         - for item in site.dev_mat_techs.flatten.uniq.sort
-          option(name="filter-topic[]" ng-model="filters.topic" value="#{item.strip}") = item.strip
-      
+          option(alue="#{item.strip}" ng-checked="filters.sys_tags.indexOf('#{item.strip}') > -1") = item.strip
+
       / label(ng-repeat="item in data.availableTopics")
       /   input(type="checkbox" name="filter-topic[]" ng-click="filters.toggleSelection(item, 'sys_tags')" value="{{item | trim}}" ng-checked="filters.sys_tags.indexOf(item) > -1")
       /   | {{item | trim}}
@@ -37,7 +37,10 @@ form.dev-mat-filters(method="GET" action="")
     h5.show-more Format
     .filter-block-inputs
       label(ng-repeat="item in data.availableFormats")
-        input(type="checkbox" name="filter-format[]" value="{{item.value}}" ng-click="filters.toggleSelection(item.value, 'sys_type')")
+        input(type="checkbox" name="filter-format[]" value="{{item.value}}"
+              ng-click="filters.toggleSelection(item.value, 'sys_type')"
+              ng-checked="filters.sys_type.indexOf(item.value) > -1"
+        )
         | {{item.name}}
 
   .filter-block
@@ -51,5 +54,5 @@ form.dev-mat-filters(method="GET" action="")
     input(type="range" name="filter-publish-date" ng-change="filters.updateDate()" ng-model="data.dateNumber" value="0" max="4")
     span.skill-display
       | {{data.displayDate}}
-  
+
 

@@ -5,12 +5,11 @@ interpolate: true
 var dcp = angular.module('dcp', []);
 
 dcp.service('materialService',function($http, $q) {
-  this.name = "Wes Bos";
+
   var query = {
-    "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", 
-    "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"],
-    "query" : "developer AND sys_type:(jbossdeveloper_bom jbossdeveloper_quickstart jbossdeveloper_archetype video rht_knowledgebase_article rht_knowledgebase_solution jbossdeveloper_example)",
+    "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"], "query" : "developer AND sys_type:(jbossdeveloper_bom jbossdeveloper_quickstart jbossdeveloper_archetype video rht_knowledgebase_article rht_knowledgebase_solution jbossdeveloper_example)",
     "size" : 500,
+    // "query" : searchTerms,
     "content_provider" : ["jboss-developer", "rht"]
   };
 
@@ -50,7 +49,7 @@ dcp.filter('thumbnailURL',function(){
       return thumbnails[item._type];
     }
   }
-  
+
 });
 
 /*
@@ -95,7 +94,6 @@ dcp.filter('timeAgo',function() {
   }
 });
 
-
 /*
   Filter to trim whitespace
 */
@@ -127,7 +125,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     size : 9
   };
 
-  /* 
+  /*
     Get latest materials on page load
   */
   materialService.getMaterials().then(function(data){
@@ -136,11 +134,11 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     $scope.paginate(1);
   });
 
-  /* 
+  /*
     Handle Pagination
   */
   $scope.paginate = function(page) {
-    var startAt = (page * $scope.pagination.size) - $scope.pagination.size; 
+    var startAt = (page * $scope.pagination.size) - $scope.pagination.size;
     var endAt = page * $scope.pagination.size;
     var pages = Math.ceil($scope.data.materials.length / $scope.pagination.size);
 
@@ -148,7 +146,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     if(page > pages || page < 1 || typeof page === "string") {
       return;
     }
-    
+
     $scope.paginate.pages = pages;
     // $scope.paginate.pagesArray = new Array(pages);
     $scope.paginate.currentPage = page;
@@ -162,11 +160,11 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   }
 
   /*
-    Handle Filters 
+    Handle Filters
   */
   $scope.filters = {};
   $scope.data.availableTopics = #{site.dev_mat_techs.flatten.uniq.sort};
-  
+
   $scope.data.availableFormats = [
     { value : "jbossdeveloper_quickstart" , "name" : "Quickstart" },
     { value : "video" , "name" : "Video" },
@@ -178,7 +176,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     { value : "article" , "name" : "Articles (Premium)" },
     { value : "solution" , "name" : "Solutions (Premium)" }
   ];
-  
+
   $scope.filters.sys_tags = [];
   $scope.filters.sys_type = [];
   $scope.filters.toggleSelection = function toggleSelection(itemName, selectedArray) {
@@ -188,34 +186,39 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
       if (idx > -1) {
         $scope.filters[selectedArray].splice(idx, 1);
       }
-      
+
       // is newly selected
       else {
         $scope.filters[selectedArray].push(itemName);
       }
   };
 
+  /*
+    Update skill level when the range input changes
+  */
   $scope.filters.updateSkillLevel = function() {
     var n = parseInt($scope.data.skillNumber);
     var labels = ["All", "Beginner", "Intermediate", "Advanced"];
     $scope.data.displaySkill = labels[n];
     switch (n) {
-      case 0 : 
+      case 0 :
         delete $scope.filters.level;
         break;
-      case 1 : 
+      case 1 :
         $scope.filters.level = "Beginner";
         break;
-      case 2 : 
+      case 2 :
         $scope.filters.level = "Intermediate";
         break;
-      case 3 : 
+      case 3 :
         $scope.filters.level = "Advanced";
         break;
     }
-    
   }
 
+  /*
+    Update date when the range input changes
+  */
   $scope.filters.updateDate = function() {
     var n = parseInt($scope.data.dateNumber);
     var d = new Date();
@@ -249,5 +252,50 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     }
   }
 
+  $scope.filters.clear = function() {
+    $scope.filters.sys_tags = [];
+    $scope.filters.sys_type = [];
+    delete $scope.filters.query;
+    delete $scope.filters.sys_rating_avg;
+    delete $scope.filters.level;
+    delete $scope.filters.sys_created;
+  }
+
+
+  $scope.filters.createString = function() {
+    var searchTerms = [];
+
+    if($scope.filters.query){
+      searchTerms.push($scope.filters.query);
+    }
+
+    if($scope.filters.sys_rating_avg) {
+      searchTerms.push("sys_rating_avg:>="+$scope.filters.sys_rating_avg);
+    }
+
+    if($scope.filters.sys_tags){
+      for (var i = 0; i < $scope.filters.sys_tags.length; i++) {
+        searchTerms.push("sys_tags:(\""+$scope.filters.sys_tags[i]+"\")");
+      };
+    }
+
+    if($scope.filters.sys_type){
+      for (var i = 0; i < $scope.filters.sys_type.length; i++) {
+        searchTerms.push("sys_type:("+$scope.filters.sys_type[i]+")");
+      };
+    }
+
+    if($scope.filters.level){
+      searchTerms.push("level:"+$scope.filters.level);
+    }
+
+    if($scope.filters.sys_created){
+      searchTerms.push("sys_created:"+$scope.filters.sys_created);
+    }
+
+    searchTerms = searchTerms.join(" AND ");
+    searchTerms = searchTerms.replace(/\s/gi,'+');
+    return searchTerms;
+  }
 
 });
