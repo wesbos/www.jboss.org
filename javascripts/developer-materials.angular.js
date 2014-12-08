@@ -6,14 +6,19 @@ var dcp = angular.module('dcp', []);
 
 dcp.service('materialService',function($http, $q) {
 
-  var query = {
-    "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"], "query" : "developer AND sys_type:(jbossdeveloper_bom jbossdeveloper_quickstart jbossdeveloper_archetype video rht_knowledgebase_article rht_knowledgebase_solution jbossdeveloper_example)",
-    "size" : 500,
-    // "query" : searchTerms,
-    "content_provider" : ["jboss-developer", "rht"]
-  };
 
-  this.getMaterials = function() {
+
+  this.getMaterials = function(searchTerms) {
+    var query = {
+      "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"], "query" : "developer AND sys_type:(jbossdeveloper_bom jbossdeveloper_quickstart jbossdeveloper_archetype video rht_knowledgebase_article rht_knowledgebase_solution jbossdeveloper_example)",
+      "size" : 500,
+      "content_provider" : ["jboss-developer", "rht"]
+    };
+
+    if(searchTerms) {
+      query.query = searchTerms;
+    }
+
     var deferred = $q.defer();
     $http.get(app.dcp.url.search, { params : query }).success(function(data){
       deferred.resolve(data);
@@ -128,11 +133,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   /*
     Get latest materials on page load
   */
-  materialService.getMaterials().then(function(data){
-    $scope.data.materials = data.hits.hits;
-    // $scope.data.displayedMaterials = $scope.data.materials.slice(0,$scope.pagination.size);
-    $scope.paginate(1);
-  });
+  // $scope.filters.applyFilters();
 
   /*
     Handle Pagination
@@ -156,7 +157,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
 
     // pagination display logic
     $scope.paginate.pagesArray = app.utils.diplayPagination($scope.paginate.currentPage, pages, 4);
-    console.log($scope.paginate.pagesArray);
+
   }
 
   /*
@@ -296,6 +297,17 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     searchTerms = searchTerms.join(" AND ");
     searchTerms = searchTerms.replace(/\s/gi,'+');
     return searchTerms;
+  };
+
+  $scope.filters.applyFilters = function() {
+    var q = this.createString();
+
+    materialService.getMaterials(q).then(function(data){
+      $scope.data.materials = data.hits.hits;
+      // $scope.data.displayedMaterials = $scope.data.materials.slice(0,$scope.pagination.size);
+      $scope.paginate(1);
+    });
+
   }
 
 });
