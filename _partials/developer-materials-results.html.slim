@@ -2,7 +2,8 @@ div
   pre(style="word-wrap:break-word")
     | {{filters}}
   .developer-material-results
-    .pagination-centered
+    img.loader(src=cdn("#{site.base_url}/images/icons/ajax-loader.gif") ng-show="data.loading")
+    .pagination-centered(ng-hide="pagination.viewall")
       ul.pagination
         li.prev.arrow(ng-class="{unavailable: paginate.currentPage < 2}")
           a(ng-click="paginate(paginate.currentPage - 1)") &laquo;
@@ -11,8 +12,57 @@ div
             | {{page}}
         li.prev.arrow(ng-class="{unavailable: paginate.currentPage >= paginate.pages}")
           a(ng-click="paginate(paginate.currentPage + 1)") &raquo;
+    .developer-materials-options
+      label(for="showall")
+        | View All
+        input(type="checkbox" name="showall" value="500" ng-model="pagination.viewall" ng-change="paginate(1)")
 
-    ul.small-block-grid-2.large-block-grid-3
+    table.developer-materials-grid
+      thead
+        tr
+          td Type
+          td Title
+          td Author
+          td Publish Date
+          td Description
+          td Product
+          td Skill Level
+          td Rating
+      tbody
+        tr.material(ng-repeat="item in data.displayedMaterials" class="get-started-placeholder-{{item.fields.sys_type}}")
+          / Type
+          td
+            img(ng-src="{{item | thumbnailURL}}")
+            / Experimental Banner
+            a.banner.experimental(ng-show="item.fields.experimental")
+            / Premium Banner
+            a.banner.premium(ng-show="item.fields.sys_url_view | isPremium")
+          / Title
+          td
+            h4
+              | {{item.fields.sys_title}}
+          / Author
+          td FILLIN
+          / Publish Date
+          td
+            | {{item.fields.sys_created | timeAgo}}
+          / Description
+          td
+            | {{item.fields.sys_description | limitTo : 300}}
+            | &hellip;
+          / Product
+          td
+            | {{item.fields.sys_tags.join(', ')}}
+          / Skill Level
+          td
+            | {{item.fields.level}}
+          / Rating
+          td
+            | {{item.fields.sys_rating_num}}
+            | {{item.fields.sys_rating_avg}}
+
+
+    ul.small-block-grid-2.large-block-grid-3(ng-hide="true")
       li.material(ng-repeat="item in data.displayedMaterials")
         div(class="get-started-placeholder-{{item.fields.sys_type}}")
           / Thumbnail

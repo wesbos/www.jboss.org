@@ -3,7 +3,7 @@
   @extend .columns;
 }
 .developer-materials-main {
-  @extend .large-13;
+  @extend .large-17;
   @extend .columns;
 }
 
@@ -206,7 +206,7 @@ body .chosen-container-multi .chosen-choices li.search-field input[type="text"] 
     h5 {
       padding-left:10px;
     }
-    
+
     select[name="filter-topic[]"] {
       display: none; // hide the select as chosen will provide the interface
     }
@@ -346,5 +346,16 @@ body .chosen-container-multi .chosen-choices li.search-field input[type="text"] 
   p {
     margin-bottom: 0;
   }
-  
+
+}
+
+img.loader {
+  display: block;
+  margin: 20px auto;
+}
+
+span.label.count {
+  border-radius:4px;
+  margin-left: 4px;
+  background:$light-green;
 }

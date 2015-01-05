@@ -10,16 +10,18 @@ dcp.service('materialService',function($http, $q) {
 
   this.getMaterials = function(searchTerms) {
     var query = {
-      "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"], "query" : "developer AND sys_type:(jbossdeveloper_bom jbossdeveloper_quickstart jbossdeveloper_archetype video rht_knowledgebase_article rht_knowledgebase_solution jbossdeveloper_example)",
+      "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", "sys_tags", "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"],
       "size" : 500,
       "content_provider" : ["jboss-developer", "rht"]
     };
 
     if(searchTerms) {
+      console.log(searchTerms);
       query.query = searchTerms;
     }
 
     var deferred = $q.defer();
+    app.dcp.url.search = "//dcp.jboss.org/v1/rest/search"; // testing with live data
     $http.get(app.dcp.url.search, { params : query }).success(function(data){
       deferred.resolve(data);
     });
@@ -33,6 +35,7 @@ dcp.service('materialService',function($http, $q) {
 */
 dcp.filter('thumbnailURL',function(){
   return function(item) {
+    // console.log(item);
     var thumbnails = {
       // jboss
       "jbossdeveloper_quickstart" : "#{cdn( site.base_url + '/images/design/get-started/jbossdeveloper_quickstart.png')}",
@@ -45,12 +48,18 @@ dcp.filter('thumbnailURL',function(){
       "demo" : "#{cdn( site.base_url + '/images/design/get-started/jbossdeveloper_demo.png')}",
       // redhat
       "solution" : "#{cdn( site.base_url + '/images/design/get-started/solution.png')}",
-      "article" : "#{cdn( site.base_url + '/images/design/get-started/article.png')}"
+      "article" : "#{cdn( site.base_url + '/images/design/get-started/article.png')}",
+      // need icons?
+      "rht_knowledgebase_article" : "#{cdn( site.base_url + '/images/design/get-started/article.png')}",
+      "rht_knowledgebase_solution" : "#{cdn( site.base_url + '/images/design/get-started/solution.png')}",
+      "jbossdeveloper_vimeo" : "#{cdn( site.base_url + '/images/design/get-started/article.png')}",
+      "jbossdeveloper_connector" : "#{cdn( site.base_url + '/images/design/get-started/article.png')}"
     };
     if(item.fields.thumbnail) {
       return item.fields.thumbnail;
     }
     else {
+      console.log(item._type);
       return thumbnails[item._type];
     }
   }
@@ -62,7 +71,12 @@ dcp.filter('thumbnailURL',function(){
 */
 dcp.filter('isPremium',function() {
   return function(url) {
-    return !!url.match("access.redhat.com");
+    if(url) {
+      return !!url.match("access.redhat.com");
+    }
+    else {
+      return false;
+    }
   }
 });
 
@@ -131,14 +145,10 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   };
 
   /*
-    Get latest materials on page load
-  */
-  // $scope.filters.applyFilters();
-
-  /*
     Handle Pagination
   */
   $scope.paginate = function(page) {
+    $scope.pagination.size = ($scope.pagination.viewall ? 500 : 9);
     var startAt = (page * $scope.pagination.size) - $scope.pagination.size;
     var endAt = page * $scope.pagination.size;
     var pages = Math.ceil($scope.data.materials.length / $scope.pagination.size);
@@ -163,7 +173,9 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   /*
     Handle Filters
   */
-  $scope.filters = {};
+  $scope.filters = {}; // stores data
+  $scope.filter = {}; // stores util functions
+
   $scope.data.availableTopics = #{site.dev_mat_techs.flatten.uniq.sort};
 
   $scope.data.availableFormats = [
@@ -180,7 +192,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
 
   $scope.filters.sys_tags = [];
   $scope.filters.sys_type = [];
-  $scope.filters.toggleSelection = function toggleSelection(itemName, selectedArray) {
+  $scope.filter.toggleSelection = function toggleSelection(itemName, selectedArray) {
       var idx = $scope.filters[selectedArray].indexOf(itemName);
 
       // is currently selected
@@ -197,7 +209,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   /*
     Update skill level when the range input changes
   */
-  $scope.filters.updateSkillLevel = function() {
+  $scope.filter.updateSkillLevel = function() {
     var n = parseInt($scope.data.skillNumber);
     var labels = ["All", "Beginner", "Intermediate", "Advanced"];
     $scope.data.displaySkill = labels[n];
@@ -220,7 +232,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   /*
     Update date when the range input changes
   */
-  $scope.filters.updateDate = function() {
+  $scope.filter.updateDate = function() {
     var n = parseInt($scope.data.dateNumber);
     var d = new Date();
     var labels = ["All", "Within 1 Year", "Within 30 days", "Within 7 days", "Within 24hrs"];
@@ -253,7 +265,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     }
   }
 
-  $scope.filters.clear = function() {
+  $scope.filter.clear = function() {
     $scope.filters.sys_tags = [];
     $scope.filters.sys_type = [];
     delete $scope.filters.query;
@@ -263,7 +275,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   }
 
 
-  $scope.filters.createString = function() {
+  $scope.filter.createString = function() {
     var searchTerms = [];
 
     if($scope.filters.query){
@@ -293,21 +305,93 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     if($scope.filters.sys_created){
       searchTerms.push("sys_created:"+$scope.filters.sys_created);
     }
-
     searchTerms = searchTerms.join(" AND ");
     searchTerms = searchTerms.replace(/\s/gi,'+');
+
+    $scope.data.searchTerms = searchTerms;
+
     return searchTerms;
   };
 
-  $scope.filters.applyFilters = function() {
+  $scope.filter.applyFilters = function() {
+    $scope.data.displayedMaterials = [];
+    $scope.data.loading = true;
     var q = this.createString();
 
     materialService.getMaterials(q).then(function(data){
       $scope.data.materials = data.hits.hits;
-      // $scope.data.displayedMaterials = $scope.data.materials.slice(0,$scope.pagination.size);
-      $scope.paginate(1);
+      $scope.data.loading = false;
+      $scope.paginate(1); // start at page 1
+      $scope.filter.group();
+      console.log(data);
     });
 
+    // save search in local storage
+    $scope.filter.store();
+
+    // update the page hash
+    window.location.hash = $.param($scope.filters);
+
   }
+
+  /*
+    groups the items together by type so we can provide a count
+  */
+  $scope.filter.group = function() {
+    $scope.data.groups = {};
+    for (var i = 0; i < $scope.data.materials.length; i++) {
+      (function(sys_type, sys_tags){
+        // group the types
+        if($scope.data.groups[sys_type] >= 0) {
+          $scope.data.groups[sys_type]++;
+        }
+        else {
+         $scope.data.groups[sys_type] = 0;
+        }
+
+        if(sys_tags) {
+
+          for (var i = 0; i < sys_tags.length; i++) {
+            if($scope.data.groups[sys_tags[i]] >= 0) {
+              $scope.data.groups[sys_tags[i]]++;
+            }
+            else {
+             $scope.data.groups[sys_tags[i]] = 0;
+            }
+          };
+
+        }
+
+      })($scope.data.materials[i].fields.sys_type, $scope.data.materials[i].fields.sys_tags);
+    };
+  }
+
+  $scope.filter.store = function() {
+    // check if we have local storage, abort if not
+    if(!window.localStorage) { return; }
+    // store them in local storage
+    window.localStorage.filters = JSON.stringify(scope.filters);
+    window.localStorage.filtersTimeStamp = new Date().getTime();
+  }
+
+  $scope.filter.restore = function() {
+    // check if we have local storage or any stored filters, abort if not
+    if(!window.localStorage || !window.localStorage.filters) { return; }
+    // only restore if less than a day old
+    var now = new Date().getTime();
+    var then = window.localStorage.filtersTimeStamp || 0;
+
+    if((now - then) < 86400000) {
+      $scope.filters = JSON.parse(window.localStorage.filters);
+    }
+
+    $scope.filter.applyFilters();
+  }
+
+  /*
+    Get latest materials on page load
+  */
+
+  $scope.filter.restore();
 
 });

@@ -6,7 +6,7 @@ doctype html
 /! [if (gte IE 9)|!(IE)]<!--> <html lang="en"> <!--<![endif]
 
 head
-  meta charset='utf-8' 
+  meta charset='utf-8'
   meta name='viewport' content='width=device-width, initial-scale=1.0'
   meta name='twitter:card' content="#{page.twitter_card || 'summary'}"
   meta property='og:type' content="#{page.og_type || 'website'}"
@@ -59,8 +59,8 @@ head
   - if site.url
     link rel='canonical' href=site.url
   = stylesheets "all" do
-    link rel='stylesheet' type='text/css' href="#{site.base_url}/stylesheets/app.css" 
-  
+    link rel='stylesheet' type='text/css' href="#{site.base_url}/stylesheets/app.css"
+
   /[if lt IE 9]
     script type='text/javascript' src='//html5shim.googlecode.com/svn/trunk/html5.js'
 
@@ -89,7 +89,7 @@ body(class="#{page.url.gsub('/','').split('.').first || 'home'} #{page.body_clas
           h1.logo
             a(href="#{site.base_url}") JBoss<strong>Developer</strong>
           / i.nav-toggle.nav-toggle-close &times;
-    - unless page.primary_nav_hidden  
+    - unless page.primary_nav_hidden
       nav.top-bar
         .row.collapse
           dl.sub-nav
@@ -180,7 +180,7 @@ body(class="#{page.url.gsub('/','').split('.').first || 'home'} #{page.body_clas
 
 
   #fb-root
-  
+
   / Page Experiments
   script src="//www.google-analytics.com/cx/api.js?experiment=moRTWrZ2RgCt2XT5fJPqrQ"
   script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js"
@@ -199,6 +199,7 @@ body(class="#{page.url.gsub('/','').split('.').first || 'home'} #{page.body_clas
     script src="#{site.base_url}/javascripts/buzz.js"
     / script src="#{site.base_url}/javascripts/developer-materials.js"
     script src="#{site.base_url}/javascripts/developer-materials.angular.js"
+    script src="#{site.base_url}/javascripts/vendor/chosen.jquery.min.js"
     script src="#{site.base_url}/javascripts/projects.js"
     script src="#{site.base_url}/javascripts/books.js"
     script src="#{site.base_url}/javascripts/rating.js"
