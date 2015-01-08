@@ -11,12 +11,12 @@ dcp.service('materialService',function($http, $q) {
   this.getMaterials = function(searchTerms) {
     var query = {
       "field"  : ["sys_author", "contributors", "duration", "github_repo_url", "level", "sys_contributors",  "sys_created", "sys_description", "sys_title", "sys_tags", "sys_url_view", "thumbnail", "sys_type", "sys_rating_num", "sys_rating_avg", "experimental"],
-      "size" : 500,
+      "size" : 50,
       "content_provider" : ["jboss-developer", "rht"]
     };
 
     if(searchTerms) {
-      console.log(searchTerms);
+      // console.log(searchTerms);
       query.query = searchTerms;
     }
 
@@ -59,12 +59,23 @@ dcp.filter('thumbnailURL',function(){
       return item.fields.thumbnail;
     }
     else {
-      console.log(item._type);
+      // console.log(item._type);
       return thumbnails[item._type];
     }
   }
 
 });
+
+dcp.filter('stars',['$sce',function($sce){
+  return function(fields) {
+    var html = "";
+    var fullStars = fields.sys_rating_avg || 0;
+    var emptyStars = 5 - fullStars;
+    html += new Array(fullStars + 1).join("<i class='fa fa-star'></i>");
+    html += new Array(emptyStars + 1).join("<i class='fa fa-star-o'></i>");
+    return $sce.trustAsHtml(html);
+  }
+}]);
 
 /*
   Filter to return whether or not an item is premium
@@ -108,6 +119,8 @@ dcp.filter('HHMMSS',function() {
 */
 dcp.filter('timeAgo',function() {
   return function(timestamp){
+    if(!timestamp) return;
+
     var date = new Date(timestamp);
     return $.timeago(date);
   }
@@ -119,6 +132,22 @@ dcp.filter('timeAgo',function() {
 dcp.filter('trim',function() {
   return function(str){
     return str.trim();
+  }
+});
+
+/*
+  Return just the name, no email
+*/
+dcp.filter('name',function(){
+  return function(str){
+    str = str || "";
+    var pieces = str.split('<');
+    if(pieces.length) {
+      return pieces[0].trim()
+    }
+    else {
+      return;
+    }
   }
 });
 
@@ -168,6 +197,10 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
     // pagination display logic
     $scope.paginate.pagesArray = app.utils.diplayPagination($scope.paginate.currentPage, pages, 4);
 
+    // next tick
+    window.setTimeout(function() {
+      app.dcp.resolveContributors();
+    },0);
   }
 
   /*
@@ -268,6 +301,8 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   $scope.filter.clear = function() {
     $scope.filters.sys_tags = [];
     $scope.filters.sys_type = [];
+    $scope.data.dateNumber = 0;
+    $scope.data.skillNumber = 0;
     delete $scope.filters.query;
     delete $scope.filters.sys_rating_avg;
     delete $scope.filters.level;
@@ -323,7 +358,7 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
       $scope.data.loading = false;
       $scope.paginate(1); // start at page 1
       $scope.filter.group();
-      console.log(data);
+      // console.log(data);
     });
 
     // save search in local storage
@@ -375,14 +410,25 @@ dcp.controller('developerMaterialsController', function($scope, materialService)
   }
 
   $scope.filter.restore = function() {
-    // check if we have local storage or any stored filters, abort if not
-    if(!window.localStorage || !window.localStorage.filters) { return; }
-    // only restore if less than a day old
-    var now = new Date().getTime();
-    var then = window.localStorage.filtersTimeStamp || 0;
+    // check if we have window hash,  local storage or any stored filters, abort if not
+    if(!window.location.hash && (!window.localStorage || !window.localStorage.filters)) {
+      return;
+    }
 
-    if((now - then) < 86400000) {
-      $scope.filters = JSON.parse(window.localStorage.filters);
+    if(window.location.hash) {
+      // console.log("Restoring from hash");
+      var hashFilters = window.location.hash.replace('#','');
+      $scope.filters = deparam(hashFilters);
+    }
+    else if(window.localStorage && window.localStorage.filters) {
+      // console.log("Going to restore from local storage");
+      // only restore if less than a day old
+      var now = new Date().getTime();
+      var then = window.localStorage.filtersTimeStamp || 0;
+
+      if((now - then) < 86400000) {
+        $scope.filters = JSON.parse(window.localStorage.filters);
+      }
     }
 
     $scope.filter.applyFilters();

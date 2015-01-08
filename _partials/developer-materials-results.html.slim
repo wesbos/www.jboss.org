@@ -12,57 +12,64 @@ div
             | {{page}}
         li.prev.arrow(ng-class="{unavailable: paginate.currentPage >= paginate.pages}")
           a(ng-click="paginate(paginate.currentPage + 1)") &raquo;
+
     .developer-materials-options
       label(for="showall")
         | View All
         input(type="checkbox" name="showall" value="500" ng-model="pagination.viewall" ng-change="paginate(1)")
+      label(for="grid")
+        input(type="radio" name="showall" ng-model="data.layout" id="grid" value="grid" ng-checked="true")
+        i.fa.fa-square
+        |  Grid
+      label(for="list")
+        input(type="radio" name="showall" ng-model="data.layout" id="list" value="list")
+        i.fa.fa-align-justify
+        |  List
 
-    table.developer-materials-grid
+
+    table.developer-materials-grid(ng-hide="data.layout === 'grid' || !data.layout")
       thead
         tr
-          td Type
-          td Title
-          td Author
-          td Publish Date
-          td Description
-          td Product
-          td Skill Level
-          td Rating
+          td.type Type
+          td.title Title
+          td.publish Publish Date
+          td.description Description
+          td.product Product
+          td.skill Skill Level
+          td.rating-stars Rating
       tbody
         tr.material(ng-repeat="item in data.displayedMaterials" class="get-started-placeholder-{{item.fields.sys_type}}")
           / Type
-          td
+          td.type
             img(ng-src="{{item | thumbnailURL}}")
             / Experimental Banner
             a.banner.experimental(ng-show="item.fields.experimental")
             / Premium Banner
             a.banner.premium(ng-show="item.fields.sys_url_view | isPremium")
           / Title
-          td
-            h4
+          td.title
+            p
               | {{item.fields.sys_title}}
-          / Author
-          td FILLIN
+            span.contributor(data-sys-contributor="{{item.fields.sys_author}}")
+              a.name
+                | {{item.fields.sys_author | name}}
           / Publish Date
-          td
+          td.publish
             | {{item.fields.sys_created | timeAgo}}
           / Description
-          td
+          td.description
             | {{item.fields.sys_description | limitTo : 300}}
             | &hellip;
           / Product
-          td
+          td.product
             | {{item.fields.sys_tags.join(', ')}}
           / Skill Level
-          td
+          td.skill
             | {{item.fields.level}}
           / Rating
-          td
-            | {{item.fields.sys_rating_num}}
-            | {{item.fields.sys_rating_avg}}
+          td.rating-stars(ng-bind-html="item.fields | stars")
 
-
-    ul.small-block-grid-2.large-block-grid-3(ng-hide="true")
+    ul.small-block-grid-2.large-block-grid-3(ng-hide="data.layout === 'list'")
       li.material(ng-repeat="item in data.displayedMaterials")
         div(class="get-started-placeholder-{{item.fields.sys_type}}")
           / Thumbnail
@@ -77,7 +84,9 @@ div
           / Material Name
           h4
             | {{item.fields.sys_title}}
-
+          / Author
+          span.contributor(data-sys-contributor="{{item.fields.sys_author}}")
+            a.name
           / timestamp
           p.material-datestamp
             | {{item.fields.sys_created | timeAgo}}

@@ -39,7 +39,15 @@ form.dev-mat-filters(method="GET" ng-submit="filter.applyFilters()")
   .filter-block.filter-block-checkboxes
     h5.show-more Format
     .filter-block-inputs
-      label(ng-repeat="item in data.availableFormats" ng-show="data.groups[item.value] || filters.sys_type.indexOf(item.value) > -1 || !data.searchTerms")
+      label(
+        ng-repeat="item in data.availableFormats"
+        ng-show="data.groups[item.value] || filters.sys_type.indexOf(item.value) > -1 || !data.searchTerms"
+        data-tooltip="true"
+        aria-haspopup="true"
+        class="has-tip tip-right"
+        title="{{item.name}} description "
+        data-options="disable_for_touch:true"
+      )
         input(type="checkbox" name="filter-format[]" value="{{item.value}}"
               ng-click="filter.toggleSelection(item.value, 'sys_type'); filter.applyFilters()"
               ng-checked="filters.sys_type.indexOf(item.value) > -1"
@@ -50,13 +58,13 @@ form.dev-mat-filters(method="GET" ng-submit="filter.applyFilters()")
 
   .filter-block
     h5 Skill Level
-    input(type="range" name="filter-skill" ng-change="filter.updateSkillLevel(); filter.applyFilters()" ng-model="data.skillNumber"  value="0" min="0" max="3")
+    input(type="range" name="filter-skill" ng-change="filter.updateSkillLevel(); filter.applyFilters()" ng-model="data.skillNumber" value="0" min="0" max="3" ng-init="data.skillNumber = 0")
     span.skill-display
       | {{data.displaySkill || 'All'}}
 
   .filter-block
     h5 Publish Date
-    input(type="range" name="filter-publish-date" ng-change="filter.updateDate(); filter.applyFilters()" ng-model="data.dateNumber" value="0" max="4")
+    input(type="range" name="filter-publish-date" ng-change="filter.updateDate(); filter.applyFilters()" ng-model="data.dateNumber" value="0" max="4" ng-init="data.dateNumber = 0")
     span.skill-display
       | {{data.displayDate || 'All'}}
 
